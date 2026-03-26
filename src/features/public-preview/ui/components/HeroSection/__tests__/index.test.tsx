@@ -16,7 +16,14 @@ const meters: Meter[] = [
     width: 75,
     fillClassName: "expFill",
   },
-  { label: "EXP / CAREER", valueLabel: "UNTIL DEC", width: 42 },
+  {
+    label: "EXP / CAREER",
+    valueLabel: "",
+    width: 42,
+    levelLabel: "LV.32",
+    progressLabel: "EXP 111 / 365",
+    nextLevelLabel: "NEXT LEVEL IN 254 EXP",
+  },
 ];
 
 describe("HeroSection", () => {
@@ -35,7 +42,11 @@ describe("HeroSection", () => {
     expect(screen.getByText("CLASS")).toBeInTheDocument();
     expect(screen.getByText("Frontend Engineer")).toBeInTheDocument();
     expect(screen.getByText("BUILD TIME")).toBeInTheDocument();
+    expect(screen.getByText("10H")).toBeInTheDocument();
     expect(screen.getByText("EXP / CAREER")).toBeInTheDocument();
+    expect(screen.getByText("LV.32")).toBeInTheDocument();
+    expect(screen.getByText("EXP 111 / 365")).toBeInTheDocument();
+    expect(screen.getByText("NEXT LEVEL IN 254 EXP")).toBeInTheDocument();
     expect(screen.getByText("SYSTEM > ACTIVE")).toBeInTheDocument();
 
     const meterFills = document.querySelectorAll('span[style*="width"]');

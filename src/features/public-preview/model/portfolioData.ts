@@ -10,6 +10,9 @@ export type Meter = {
   valueLabel: string;
   width: number;
   fillClassName?: MeterFillClassName;
+  levelLabel?: string;
+  progressLabel?: string;
+  nextLevelLabel?: string;
 };
 
 export type Location = {

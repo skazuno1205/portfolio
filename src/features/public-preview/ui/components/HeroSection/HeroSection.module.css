@@ -54,17 +54,47 @@
 
 .meterGroup {
   display: grid;
-  gap: var(--grid-gap-tight);
+  gap: var(--space-6);
 }
 
-.meterTopline {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+.meterBlock {
+  display: grid;
+  gap: 10px;
+}
+
+.meterTitle,
+.meterValue,
+.meterSupportingText {
+  margin: 0;
   font-family: "Press Start 2P", monospace;
   font-size: var(--font-size-note);
+}
+
+.meterTitle {
   color: var(--accent-2);
+}
+
+.meterMetaRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+  line-height: 1.7;
+}
+
+.meterValue {
+  color: #fff0aa;
+}
+
+.meterMetaPrimary {
+  color: #fff0aa;
+}
+
+.meterMetaSecondary {
+  margin-left: auto;
+  color: var(--accent);
 }
 
 .meterTrack {
@@ -87,6 +117,10 @@
     #53c9ff 24px
   );
   transition: width 1.6s steps(18);
+}
+
+.meterSupportingText {
+  color: #fff0aa;
 }
 
 .hpFill {
@@ -157,7 +191,10 @@
     font-size: 1.8rem;
   }
 
-  .meterTopline,
+  .meterTitle,
+  .meterValue,
+  .meterSupportingText,
+  .meterMetaRow,
   .questFeedRow {
     font-size: 0.58rem;
   }
