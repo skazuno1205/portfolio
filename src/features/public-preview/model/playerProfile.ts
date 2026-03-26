@@ -3,7 +3,7 @@ import type { Meter } from "./portfolioData";
 const playerBirthDate = {
   year: 1993,
   month: 12,
-  day: 1,
+  day: 5,
 } as const;
 
 function createBirthdayDate(year: number) {
@@ -12,6 +12,18 @@ function createBirthdayDate(year: number) {
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
+}
+
+function createCareerExp(referenceDate: Date) {
+  const currentLevel = getCurrentAge(referenceDate);
+  const totalExp = 365;
+  const currentExp = getElapsedDaysSincePreviousBirthday(referenceDate);
+
+  return {
+    levelLabel: `LV.${currentLevel}`,
+    progressLabel: `EXP ${currentExp} / ${totalExp}`,
+    nextLevelLabel: `NEXT LEVEL IN ${totalExp - currentExp} EXP`,
+  };
 }
 
 export function getCurrentAge(referenceDate = new Date()) {
@@ -25,19 +37,8 @@ export function getCurrentAge(referenceDate = new Date()) {
 }
 
 export function getBirthdayProgress(referenceDate = new Date()) {
-  const currentYear = referenceDate.getFullYear();
-  const birthdayThisYear = createBirthdayDate(currentYear);
-  const previousBirthday =
-    referenceDate >= birthdayThisYear
-      ? birthdayThisYear
-      : createBirthdayDate(currentYear - 1);
-  const nextBirthday =
-    referenceDate >= birthdayThisYear
-      ? createBirthdayDate(currentYear + 1)
-      : birthdayThisYear;
-  const totalDuration = nextBirthday.getTime() - previousBirthday.getTime();
-  const elapsedDuration = referenceDate.getTime() - previousBirthday.getTime();
-  const progress = clamp(elapsedDuration / totalDuration, 0, 1);
+  const elapsedDays = getElapsedDaysSincePreviousBirthday(referenceDate);
+  const progress = clamp(elapsedDays / 365, 0, 1);
 
   return {
     nextBirthdayLabel: "UNTIL DEC",
@@ -45,8 +46,23 @@ export function getBirthdayProgress(referenceDate = new Date()) {
   };
 }
 
+function getElapsedDaysSincePreviousBirthday(referenceDate: Date) {
+  const currentYear = referenceDate.getFullYear();
+  const birthdayThisYear = createBirthdayDate(currentYear);
+  const previousBirthday =
+    referenceDate >= birthdayThisYear
+      ? birthdayThisYear
+      : createBirthdayDate(currentYear - 1);
+
+  return Math.floor(
+    (referenceDate.getTime() - previousBirthday.getTime()) /
+      (1000 * 60 * 60 * 24),
+  );
+}
+
 export function getPortfolioMeters(referenceDate = new Date()): Meter[] {
   const birthdayProgress = getBirthdayProgress(referenceDate);
+  const careerExp = createCareerExp(referenceDate);
 
   return [
     {
@@ -60,6 +76,9 @@ export function getPortfolioMeters(referenceDate = new Date()): Meter[] {
       valueLabel: birthdayProgress.nextBirthdayLabel,
       width: birthdayProgress.progressPercent,
       fillClassName: "expFill",
+      levelLabel: careerExp.levelLabel,
+      progressLabel: careerExp.progressLabel,
+      nextLevelLabel: careerExp.nextLevelLabel,
     },
   ];
 }
