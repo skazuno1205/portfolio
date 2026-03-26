@@ -1,0 +1,168 @@
+:root {
+  --bg: #12091f;
+  --bg-deep: #06030f;
+  --panel: #22123d;
+  --panel-2: #2b1950;
+  --panel-3: #10081d;
+  --text: #f7f0ff;
+  --muted: #d8c6eb;
+  --accent: #8cf3ff;
+  --accent-2: #f8d15b;
+  --accent-3: #ff87b7;
+  --success: #8dff8a;
+  --danger: #ff7d7d;
+  --shadow: 0 0 0 4px #070211, 0 0 0 8px #3c2277, 0 24px 48px rgba(0, 0, 0, 0.4);
+  --grid-max: 1440px;
+  --grid-max-narrow: 1120px;
+  --layout-gutter: 20px;
+  --theme-sky-top: #12091f;
+  --theme-sky-bottom: #06030f;
+  --theme-glow: rgba(140, 243, 255, 0.22);
+  --theme-haze: rgba(248, 209, 91, 0.08);
+  --theme-floor: #321858;
+  --theme-panel-glow: rgba(140, 243, 255, 0.12);
+  --color-surface-default: var(--panel);
+  --color-surface-raised: var(--panel-2);
+  --color-surface-inset: var(--panel-3);
+  --color-text-primary: var(--text);
+  --color-text-secondary: var(--muted);
+  --color-border-strong: #0e081b;
+  --color-border-soft: rgba(255, 255, 255, 0.08);
+  --color-brand-primary: var(--accent);
+  --color-brand-secondary: var(--accent-2);
+  --color-brand-tertiary: var(--accent-3);
+  --quest-main-bg: linear-gradient(
+    180deg,
+    rgba(140, 243, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  --quest-main-border: rgba(140, 243, 255, 0.22);
+  --quest-side-bg: linear-gradient(
+    180deg,
+    rgba(255, 185, 126, 0.16),
+    rgba(255, 124, 124, 0.05)
+  );
+  --quest-side-border: rgba(255, 185, 124, 0.45);
+  --quest-side-text: #ffd9b2;
+  --font-size-hero: clamp(2rem, 4.8vw, 4.2rem);
+  --font-size-h2: clamp(1.4rem, 2.4vw, 2.2rem);
+  --font-size-body: 1rem;
+  --font-size-label: 0.72rem;
+  --font-size-ui-sm: 0.68rem;
+  --font-size-ui-md: 0.76rem;
+  --font-size-note: 0.64rem;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 54px;
+  --section-padding-y: var(--space-9);
+  --panel-padding: var(--space-6);
+  --panel-padding-compact: var(--space-4);
+  --grid-gap-tight: 14px;
+  --grid-gap-base: var(--space-5);
+  --shadow-panel: 0 0 0 4px #070211, 0 0 0 8px #3c2277, 0 24px 48px
+    rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "DotGothic16", monospace;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  background: radial-gradient(circle at top, var(--theme-glow), transparent 30%),
+    linear-gradient(180deg, var(--theme-sky-top), var(--theme-sky-bottom));
+  overflow-x: hidden;
+}
+
+body.theme-sunset {
+  --theme-sky-top: #351431;
+  --theme-sky-bottom: #1b0d27;
+  --theme-glow: rgba(255, 137, 117, 0.22);
+  --theme-haze: rgba(255, 214, 120, 0.12);
+  --theme-floor: #60315f;
+  --theme-panel-glow: rgba(255, 176, 101, 0.13);
+}
+
+body.theme-void {
+  --theme-sky-top: #090213;
+  --theme-sky-bottom: #010105;
+  --theme-glow: rgba(0, 255, 255, 0.18);
+  --theme-haze: rgba(255, 0, 170, 0.12);
+  --theme-floor: #1d0b36;
+  --theme-panel-glow: rgba(255, 0, 170, 0.12);
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+}
+
+body::before {
+  background: radial-gradient(
+      circle at 20% 15%,
+      var(--theme-haze),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 84% 18%,
+      rgba(255, 255, 255, 0.06),
+      transparent 14%
+    ),
+    radial-gradient(
+      circle at 70% 66%,
+      rgba(255, 135, 183, 0.14),
+      transparent 24%
+    );
+}
+
+body::after {
+  background: linear-gradient(transparent 60%, rgba(8, 4, 20, 0.5)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  opacity: 0.6;
+}
+
+::selection {
+  background: rgba(140, 243, 255, 0.35);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --layout-gutter: 16px;
+  }
+}

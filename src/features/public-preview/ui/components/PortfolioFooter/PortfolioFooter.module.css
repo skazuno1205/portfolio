@@ -1,0 +1,16 @@
+.footer {
+  width: min(calc(100% - (var(--layout-gutter) * 2)), var(--grid-max));
+  margin: 0 auto;
+  padding: 20px 0 36px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    width: min(calc(100% - (var(--layout-gutter) * 2)), var(--grid-max));
+  }
+}

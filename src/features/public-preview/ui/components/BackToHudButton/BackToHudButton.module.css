@@ -1,0 +1,84 @@
+.backToHudButton {
+  position: fixed;
+  right: max(18px, var(--layout-gutter));
+  bottom: max(18px, var(--layout-gutter));
+  z-index: 24;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 14px 18px;
+  border: 1px solid rgba(140, 243, 255, 0.24);
+  background: linear-gradient(
+      180deg,
+      rgba(25, 13, 43, 0.92),
+      rgba(15, 8, 29, 0.96)
+    ), rgba(9, 4, 19, 0.9);
+  color: #d9f9ff;
+  box-shadow: 0 0 0 2px rgba(17, 10, 31, 0.95), 0 0 0 5px
+    rgba(93, 56, 164, 0.46), 0 10px 24px rgba(5, 8, 24, 0.28);
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(140, 243, 255, 0.18);
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    color 0.18s ease,
+    filter 0.18s ease,
+    border-color 0.18s ease;
+  animation: backToHudEnter 0.2s ease-out;
+}
+
+.backToHudButton:hover,
+.backToHudButton:focus-visible {
+  color: #f5feff;
+  filter: brightness(1.04);
+  border-color: rgba(140, 243, 255, 0.42);
+}
+
+.backToHudButton:focus-visible {
+  outline: 2px solid rgba(140, 243, 255, 0.7);
+  outline-offset: 3px;
+}
+
+.backToHudCursor {
+  display: inline-block;
+  color: #8cf3ff;
+  transform: translateX(0);
+  transition: transform 0.18s steps(2), opacity 0.18s steps(2);
+}
+
+.backToHudLabel {
+  display: inline-block;
+  transform: translateY(1px);
+}
+
+.backToHudButton:hover .backToHudCursor,
+.backToHudButton:focus-visible .backToHudCursor {
+  transform: translateX(4px);
+}
+
+@keyframes backToHudEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .backToHudButton {
+    right: 14px;
+    bottom: 14px;
+    min-height: 52px;
+    padding: 12px 14px;
+    font-size: 0.58rem;
+  }
+}

@@ -1,0 +1,81 @@
+.stackPanel {
+  overflow: hidden;
+}
+
+.stackPanel + .stackPanel {
+  margin-top: var(--space-5);
+}
+
+.stackPanel[open] {
+  box-shadow: 0 0 0 4px #070211, 0 0 0 8px #6c43c0, 0 24px 48px
+    rgba(0, 0, 0, 0.4);
+}
+
+.stackPanelSummary {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--panel-padding);
+  cursor: pointer;
+  background: linear-gradient(
+      180deg,
+      rgba(140, 243, 255, 0.08),
+      rgba(255, 255, 255, 0.015)
+    ), rgba(9, 4, 19, 0.55);
+  list-style: none;
+}
+
+.stackPanelSummary::-webkit-details-marker {
+  display: none;
+}
+
+.stackPanelTitle,
+.stackPanelHint,
+.stackPanelCategory h3 {
+  font-family: "Press Start 2P", monospace;
+}
+
+.stackPanelTitle {
+  font-size: var(--font-size-ui-md);
+  color: #fff6d1;
+}
+
+.stackPanelHint {
+  font-size: var(--font-size-note);
+  color: var(--accent);
+}
+
+.stackPanelContent {
+  padding: 0 var(--panel-padding) var(--panel-padding);
+}
+
+.stackPanelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap-base);
+  padding-top: var(--space-4);
+  align-items: start;
+}
+
+.stackPanelCategory {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding: var(--space-4);
+  background: rgba(7, 3, 17, 0.35);
+  border: 3px solid var(--color-border-soft);
+}
+
+.stackPanelCategory h3 {
+  margin: 0;
+  font-size: var(--font-size-label);
+  line-height: 1.8;
+  color: var(--accent-2);
+}
+
+@media (max-width: 860px) {
+  .stackPanelGrid {
+    grid-template-columns: 1fr;
+  }
+}

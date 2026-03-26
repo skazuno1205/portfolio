@@ -1,0 +1,62 @@
+.hobbyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gap-base);
+}
+
+.hobbyCard {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  min-height: 220px;
+  padding: var(--panel-padding);
+  background: linear-gradient(
+      180deg,
+      rgba(248, 209, 91, 0.08),
+      rgba(255, 255, 255, 0.02)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0)),
+    var(--color-surface-default);
+}
+
+.hobbyCardIconWrap {
+  display: inline-grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  background: rgba(7, 3, 17, 0.45);
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 2px rgba(140, 243, 255, 0.1);
+}
+
+.hobbyCardIcon {
+  font-size: 2rem;
+  color: var(--accent-2);
+}
+
+.hobbyCardBody {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.hobbyCardBody h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hobbyCardBody p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 860px) {
+  .hobbyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hobbyCard {
+    padding: 18px;
+  }
+}

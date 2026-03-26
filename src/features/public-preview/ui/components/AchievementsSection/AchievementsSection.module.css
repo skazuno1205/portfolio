@@ -1,0 +1,64 @@
+.trophyList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap-base);
+}
+
+.trophy {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--panel-padding);
+}
+
+.trophy h3 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+  line-height: 1.35;
+}
+
+.trophy p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.trophyYear {
+  display: inline-grid;
+  place-items: center;
+  align-self: start;
+  min-height: 86px;
+  background: #ffdc72;
+  color: #4d3200;
+  box-shadow: 0 0 0 3px #583700, 0 0 0 6px #ffefb5;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+  position: relative;
+  top: 8px;
+}
+
+.trophyLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(140, 243, 255, 0.12);
+  border: 2px solid rgba(140, 243, 255, 0.4);
+  color: var(--accent);
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+}
+
+@media (max-width: 860px) {
+  .trophyList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .trophy {
+    padding: 18px;
+    grid-template-columns: 1fr;
+  }
+}

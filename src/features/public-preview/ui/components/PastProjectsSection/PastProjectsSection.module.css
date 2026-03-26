@@ -1,0 +1,459 @@
+.projectList {
+  display: grid;
+  gap: var(--grid-gap-base);
+}
+
+.projectListActions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+.spaceCatOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.spaceCatSprite {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(84px, 12vw, 156px);
+  height: auto;
+  opacity: 0;
+  filter: drop-shadow(0 14px 18px rgba(37, 19, 61, 0.34));
+  transform: translate3d(var(--space-cat-start-x), var(--space-cat-start-y), 0)
+    rotate(var(--space-cat-rotation)) scale(var(--space-cat-scale));
+  will-change: transform, opacity;
+  animation-duration: var(--space-cat-duration);
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.spaceCatFlyLeft {
+  animation-name: spaceCatFlyLeft;
+}
+
+.spaceCatFlyRight {
+  animation-name: spaceCatFlyRight;
+}
+
+.spaceCatFlyDownLeft {
+  animation-name: spaceCatFlyDownLeft;
+}
+
+.spaceCatFlyDownRight {
+  animation-name: spaceCatFlyDownRight;
+}
+
+.spaceCatFlyUpLeft {
+  animation-name: spaceCatFlyUpLeft;
+}
+
+.spaceCatFlyUpRight {
+  animation-name: spaceCatFlyUpRight;
+}
+
+.moreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 320px;
+  min-height: 64px;
+  padding: 16px 26px;
+  border: 1px solid rgba(140, 243, 255, 0.26);
+  background: linear-gradient(
+      180deg,
+      rgba(25, 13, 43, 0.92),
+      rgba(15, 8, 29, 0.96)
+    ), rgba(9, 4, 19, 0.88);
+  color: #d9f9ff;
+  box-shadow: 0 0 0 2px rgba(17, 10, 31, 0.95), 0 0 0 5px
+    rgba(93, 56, 164, 0.52), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(140, 243, 255, 0.18);
+}
+
+.moreButton:hover,
+.moreButton:focus-visible {
+  color: #f5feff;
+  filter: brightness(1.04);
+}
+
+.moreButtonCursor {
+  display: inline-block;
+  color: #8cf3ff;
+  transform: translateX(0);
+  transition: transform 0.18s steps(2), opacity 0.18s steps(2);
+}
+
+.moreButtonLabel {
+  display: inline-block;
+  transform: translateY(1px);
+}
+
+.moreButton:hover .moreButtonCursor,
+.moreButton:focus-visible .moreButtonCursor {
+  transform: translateX(4px);
+}
+
+.projectCard {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-7);
+  min-height: 280px;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 135, 183, 0.08),
+      rgba(255, 255, 255, 0.015)
+    ), var(--color-surface-default);
+}
+
+.projectCardMedia {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  width: 220px;
+  height: 220px;
+  padding: var(--space-3);
+  overflow: hidden;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.015)
+    ), rgba(9, 4, 19, 0.6);
+  border: 3px solid var(--color-border-soft);
+}
+
+.projectCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.projectCardContent,
+.projectCardBody {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.projectCardContent {
+  gap: var(--space-5);
+}
+
+.projectCardBody h3,
+.projectCardBody p {
+  margin: 0;
+}
+
+.projectCardBody h3 {
+  font-size: var(--font-size-h2);
+  line-height: 1.35;
+}
+
+.projectCardSubtitle {
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+  letter-spacing: 0.08em;
+  color: var(--accent-2);
+}
+
+.projectCardDescription {
+  color: var(--color-text-secondary);
+}
+
+.projectTitleTrigger {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.16s ease, text-shadow 0.16s ease;
+}
+
+.projectTitleTrigger:hover,
+.projectTitleTrigger:focus-visible {
+  color: #fff0aa;
+  text-shadow: 0 0 10px rgba(255, 214, 108, 0.34);
+}
+
+.projectActionsWrap {
+  position: relative;
+  min-height: 168px;
+  padding-top: 96px;
+}
+
+.trollDropArena {
+  position: absolute;
+  inset: 0 0 58px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.trollDropSprite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.28));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.projectActionsFloor {
+  position: relative;
+  z-index: 1;
+  padding-top: 10px;
+}
+
+.projectActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.projectAction {
+  justify-self: start;
+  min-width: 220px;
+}
+
+.projectBestScore {
+  display: inline-flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 16px;
+  color: #ffe8a3;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.56rem;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+@keyframes spaceCatFlyLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        var(--space-cat-start-x),
+        var(--space-cat-start-y),
+        0
+      )
+      rotate(calc(var(--space-cat-rotation) * -0.7))
+      scale(var(--space-cat-scale));
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.96;
+    transform: translate3d(-22vw, var(--space-cat-start-y), 0)
+      rotate(var(--space-cat-rotation)) scale(var(--space-cat-scale));
+  }
+}
+
+@keyframes spaceCatFlyRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        var(--space-cat-start-x),
+        var(--space-cat-start-y),
+        0
+      )
+      rotate(calc(var(--space-cat-rotation) * -1)) scale(var(--space-cat-scale));
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.96;
+    transform: translate3d(112vw, var(--space-cat-start-y), 0)
+      rotate(var(--space-cat-rotation)) scale(var(--space-cat-scale));
+  }
+}
+
+@keyframes spaceCatFlyDownLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        var(--space-cat-start-x),
+        var(--space-cat-start-y),
+        0
+      )
+      rotate(calc(var(--space-cat-rotation) * -0.8))
+      scale(var(--space-cat-scale));
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.94;
+    transform: translate3d(-20vw, 102vh, 0) rotate(var(--space-cat-rotation))
+      scale(var(--space-cat-scale));
+  }
+}
+
+@keyframes spaceCatFlyDownRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        var(--space-cat-start-x),
+        var(--space-cat-start-y),
+        0
+      )
+      rotate(calc(var(--space-cat-rotation) * -0.8))
+      scale(var(--space-cat-scale));
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.94;
+    transform: translate3d(112vw, 102vh, 0) rotate(var(--space-cat-rotation))
+      scale(var(--space-cat-scale));
+  }
+}
+
+@keyframes spaceCatFlyUpLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        var(--space-cat-start-x),
+        var(--space-cat-start-y),
+        0
+      )
+      rotate(calc(var(--space-cat-rotation) * -0.6))
+      scale(var(--space-cat-scale));
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.94;
+    transform: translate3d(-18vw, -18vh, 0) rotate(var(--space-cat-rotation))
+      scale(var(--space-cat-scale));
+  }
+}
+
+@keyframes spaceCatFlyUpRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        var(--space-cat-start-x),
+        var(--space-cat-start-y),
+        0
+      )
+      rotate(calc(var(--space-cat-rotation) * -0.6))
+      scale(var(--space-cat-scale));
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.94;
+    transform: translate3d(112vw, -18vh, 0) rotate(var(--space-cat-rotation))
+      scale(var(--space-cat-scale));
+  }
+}
+
+@media (max-width: 640px) {
+  .moreButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 60px;
+    padding: 14px 18px;
+    gap: 10px;
+  }
+
+  .projectCard {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    padding: 18px;
+    gap: var(--space-5);
+  }
+
+  .projectCardMedia {
+    justify-self: center;
+    align-self: start;
+    width: min(100%, 220px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    padding: var(--space-2);
+  }
+
+  .projectCardContent,
+  .projectCardBody {
+    width: 100%;
+  }
+
+  .projectCardContent {
+    gap: var(--space-4);
+  }
+
+  .projectCardBody {
+    gap: var(--space-3);
+  }
+
+  .projectCardBody h3 {
+    line-height: 1.45;
+  }
+
+  .projectCardDescription {
+    line-height: 1.8;
+  }
+
+  .projectActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .projectActionsWrap {
+    width: 100%;
+    min-height: 148px;
+    padding-top: 78px;
+  }
+
+  .trollDropArena {
+    inset: 0 0 50px;
+  }
+
+  .projectAction {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .projectBestScore {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .spaceCatSprite {
+    width: clamp(72px, 22vw, 110px);
+  }
+}

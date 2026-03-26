@@ -1,0 +1,411 @@
+.careerSectionHeading {
+  width: 100%;
+  max-width: 100%;
+}
+
+.careerSectionTitle {
+  width: 100%;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.worldGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--grid-gap-base);
+}
+
+.worldTimeline {
+  display: grid;
+  align-content: start;
+  gap: var(--space-7);
+  padding: 22px var(--panel-padding);
+  background: linear-gradient(
+      180deg,
+      rgba(140, 243, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0)),
+    var(--color-surface-default);
+}
+
+.worldTimelineTrack,
+.parallelRouteTrack {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: start;
+}
+
+.worldTimelineTrack::before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 10px;
+  height: 4px;
+  background: linear-gradient(90deg, #6fd8ff 0%, #ff87b7 100%);
+  box-shadow: 0 0 0 2px #10081d;
+}
+
+.worldTimelineTrack li,
+.parallelRouteTrack li {
+  display: grid;
+  justify-items: center;
+}
+
+.timelineNode,
+.parallelDot {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  transition: transform 0.15s steps(2);
+}
+
+.timelineNode {
+  gap: 12px;
+}
+
+.timelineNodeDot {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #2a194d;
+  box-shadow: 0 0 0 3px #0f081d, 0 0 0 6px #5d38a4;
+  transition: transform 0.15s steps(2), box-shadow 0.2s ease, background 0.2s
+    ease;
+}
+
+.timelineNodeLabel,
+.parallelDotLabel,
+.locationPanelIndex,
+.parallelRouteHint {
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+}
+
+.timelineNodeLabel {
+  color: #fff6d1;
+  line-height: 1.7;
+}
+
+.timelineNode:hover,
+.timelineNode:focus-visible,
+.isActive {
+  transform: translateY(-2px);
+}
+
+.timelineNode:hover .timelineNodeDot,
+.timelineNode:focus-visible .timelineNodeDot,
+.isActive .timelineNodeDot {
+  background: var(--accent-2);
+  box-shadow: 0 0 0 3px #3d2400, 0 0 0 6px #ffefb5;
+  transform: scale(1.18);
+}
+
+.timelineNode.isActive .timelineNodeLabel {
+  color: var(--accent);
+}
+
+.timelineNode.isActive::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid var(--accent-2);
+}
+
+.parallelRoute {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.parallelRouteHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.parallelRouteHint {
+  margin: 0;
+  color: rgba(255, 185, 124, 0.86);
+}
+
+.parallelRouteTrack::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: calc(100% / 12);
+  top: 7px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 185, 124, 0.55) 0%,
+    rgba(255, 135, 183, 0.6) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(16, 8, 29, 0.9);
+}
+
+.parallelRouteTrack li:first-child {
+  grid-column: 3 / 5;
+  justify-self: center;
+}
+
+.parallelRouteTrack li:last-child {
+  grid-column: 6 / 7;
+  justify-self: center;
+}
+
+.parallelDot {
+  gap: 10px;
+}
+
+.parallelDot:hover,
+.parallelDot:focus-visible,
+.parallelDot.isActive {
+  transform: translateY(-1px);
+}
+
+.parallelDotNode {
+  display: inline-grid;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #3c2457;
+  box-shadow: 0 0 0 2px #120a20, 0 0 0 4px rgba(255, 185, 124, 0.24);
+  transition: transform 0.15s steps(2), box-shadow 0.2s ease, background 0.2s
+    ease;
+}
+
+.parallelDotLabel {
+  color: rgba(255, 240, 220, 0.82);
+  line-height: 1.5;
+}
+
+.parallelDot:hover .parallelDotNode,
+.parallelDot:focus-visible .parallelDotNode,
+.parallelDot.isActive .parallelDotNode {
+  background: #ffb97c;
+  box-shadow: 0 0 0 2px #2d1608, 0 0 0 5px rgba(255, 185, 124, 0.4), 0 0 16px
+    rgba(255, 185, 124, 0.28);
+  transform: scale(1.18);
+}
+
+.parallelDot.isActive .parallelDotLabel {
+  color: #fff2d7;
+}
+
+.locationPanel {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  padding: 28px;
+}
+
+.locationPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.locationPanelIndex {
+  margin: 0;
+  color: var(--accent-2);
+}
+
+.locationPanelBody {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 920px;
+}
+
+.locationPanelBody h3 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+  line-height: 1.35;
+}
+
+.locationPanelBody p,
+.locationStats li {
+  color: var(--color-text-secondary);
+}
+
+.locationStats {
+  margin: 0;
+  padding: 0 0 0 1.35rem;
+  display: grid;
+  gap: 12px;
+}
+
+.locationStats li {
+  line-height: 1.75;
+}
+
+@media (max-width: 640px) {
+  .careerSectionHeading {
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+
+  .careerSectionTitle {
+    font-size: clamp(1.45rem, 7vw, 1.95rem);
+    line-height: 1.4;
+  }
+
+  .careerSectionHeading p:last-child {
+    max-width: 100%;
+    line-height: 1.65;
+  }
+
+  .worldTimeline,
+  .locationPanel {
+    padding: 18px;
+  }
+
+  .worldTimelineTrack {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 4px;
+    padding-left: 0;
+  }
+
+  .worldTimelineTrack::before {
+    left: 7%;
+    right: 7%;
+    top: 7px;
+    bottom: auto;
+    width: auto;
+    height: 3px;
+    background: linear-gradient(90deg, #6fd8ff 0%, #ff87b7 100%);
+  }
+
+  .worldTimelineTrack li,
+  .parallelRouteTrack li {
+    justify-items: center;
+  }
+
+  .timelineNode {
+    gap: 12px;
+    padding-top: 2px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .timelineNodeDot {
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+    box-shadow: 0 0 0 2px #0f081d, 0 0 0 4px #5d38a4;
+  }
+
+  .timelineNodeLabel {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.64rem;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+  }
+
+  .timelineNode:hover,
+  .timelineNode:focus-visible,
+  .timelineNode.isActive {
+    transform: translateY(-1px);
+  }
+
+  .timelineNode:hover .timelineNodeDot,
+  .timelineNode:focus-visible .timelineNodeDot,
+  .timelineNode.isActive .timelineNodeDot {
+    box-shadow: 0 0 0 2px #3d2400, 0 0 0 4px #ffefb5;
+    transform: scale(1.08);
+  }
+
+  .timelineNode.isActive::after {
+    top: 21px;
+    border-left-width: 6px;
+    border-right-width: 6px;
+    border-top-width: 8px;
+  }
+
+  .parallelRouteTrack {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding-left: 18px;
+  }
+
+  .parallelRouteHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .parallelRouteHint {
+    line-height: 1.7;
+  }
+
+  .parallelRouteTrack::before {
+    left: calc(100% / 2);
+    right: calc(100% / 12);
+    top: 6px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 185, 124, 0.55) 0%,
+      rgba(255, 135, 183, 0.6) 100%
+    );
+  }
+
+  .parallelRouteTrack li:first-child,
+  .parallelRouteTrack li:last-child {
+    justify-self: center;
+  }
+
+  .parallelDot {
+    gap: 8px;
+  }
+
+  .parallelRouteTrack {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-3);
+    padding-left: 0;
+  }
+
+  .parallelRouteTrack li:first-child {
+    grid-column: 3 / 5;
+  }
+
+  .parallelRouteTrack li:last-child {
+    grid-column: 6 / 7;
+  }
+
+  .parallelDotNode {
+    width: 12px;
+    height: 12px;
+  }
+}

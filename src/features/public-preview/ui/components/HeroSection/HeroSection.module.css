@@ -1,0 +1,164 @@
+.hero {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-items: center;
+  padding-top: 28px;
+  padding-bottom: 36px;
+}
+
+.heroHud {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--panel-padding);
+}
+
+.heroTitleWrap {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heroTitle {
+  margin: var(--space-3) 0 var(--space-4);
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-hero);
+  line-height: 1.18;
+  color: #fff6d1;
+  text-shadow: 4px 4px 0 #7e4f00, 8px 8px 0 rgba(0, 0, 0, 0.35);
+}
+
+.heroSubtitle {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.heroStatusGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap-tight);
+}
+
+.statusCard {
+  background: rgba(7, 3, 17, 0.42);
+  border: 3px solid var(--color-border-soft);
+  padding: var(--space-3);
+}
+
+.statusCard strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.meterGroup {
+  display: grid;
+  gap: var(--grid-gap-tight);
+}
+
+.meterTopline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+  color: var(--accent-2);
+}
+
+.meterTrack {
+  width: 100%;
+  height: 22px;
+  background: #0b0516;
+  border: 3px solid #3a236a;
+  padding: 2px;
+}
+
+.meterFill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent) 12px,
+    #53c9ff 12px,
+    #53c9ff 24px
+  );
+  transition: width 1.6s steps(18);
+}
+
+.hpFill {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--success),
+    var(--success) 12px,
+    #5ad86f 12px,
+    #5ad86f 24px
+  );
+}
+
+.magicFill {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent-3),
+    var(--accent-3) 12px,
+    #ffcb5d 12px,
+    #ffcb5d 24px
+  );
+}
+
+.expFill {
+  background: repeating-linear-gradient(
+    90deg,
+    #7dd3fc,
+    #7dd3fc 12px,
+    #fef08a 12px,
+    #fef08a 24px
+  );
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.questFeedRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+  color: var(--accent-2);
+}
+
+.systemMessage {
+  min-height: 42px;
+  margin: 0;
+  color: #fff7b8;
+}
+
+@media (max-width: 860px) {
+  .heroStatusGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroHud {
+    padding: 18px;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+
+  .meterTopline,
+  .questFeedRow {
+    font-size: 0.58rem;
+  }
+}

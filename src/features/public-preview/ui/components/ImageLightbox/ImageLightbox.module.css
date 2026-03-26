@@ -1,0 +1,89 @@
+.imageLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.imageLightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(2, 0, 8, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.imageLightboxDialog {
+  position: relative;
+  margin: 0;
+  width: min(100%, 980px);
+  max-height: min(88vh, 820px);
+  padding: calc(var(--panel-padding) + 12px) var(--panel-padding)
+    var(--panel-padding);
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.015)
+    ), rgba(10, 5, 22, 0.96);
+}
+
+.imageLightboxClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  background: #2a194d;
+  color: var(--accent);
+  box-shadow: 0 0 0 3px #0f081d, 0 0 0 6px #5d38a4;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+}
+
+.imageLightboxFrame {
+  display: grid;
+  place-items: center;
+  min-height: min(72vh, 700px);
+  padding: var(--space-4);
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.015)
+    ), rgba(7, 3, 17, 0.62);
+  border: 3px solid var(--color-border-soft);
+}
+
+.imageLightboxImage {
+  display: block;
+  max-width: 100%;
+  max-height: min(66vh, 640px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .imageLightbox {
+    padding: 16px;
+  }
+
+  .imageLightboxDialog {
+    padding: 56px 18px 18px;
+  }
+
+  .imageLightboxFrame {
+    min-height: auto;
+    padding: var(--space-3);
+  }
+
+  .imageLightboxImage {
+    max-height: 72vh;
+  }
+}

@@ -1,0 +1,22 @@
+.storyPanel {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--panel-padding);
+}
+
+.storyPanel h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+  line-height: 1.35;
+}
+
+.storyPanel p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 640px) {
+  .storyPanel {
+    padding: 18px;
+  }
+}

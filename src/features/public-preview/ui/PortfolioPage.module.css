@@ -1,0 +1,46 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top, var(--theme-glow), transparent 30%),
+    linear-gradient(180deg, var(--theme-sky-top), var(--theme-sky-bottom));
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+}
+
+.page::before {
+  background: radial-gradient(
+      circle at 20% 15%,
+      var(--theme-haze),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 84% 18%,
+      rgba(255, 255, 255, 0.06),
+      transparent 14%
+    ),
+    radial-gradient(
+      circle at 70% 66%,
+      rgba(255, 135, 183, 0.14),
+      transparent 24%
+    );
+}
+
+.page::after {
+  background: linear-gradient(transparent 60%, rgba(8, 4, 20, 0.5)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  opacity: 0.6;
+}

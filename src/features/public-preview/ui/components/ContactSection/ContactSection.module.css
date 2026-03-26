@@ -1,0 +1,53 @@
+.savePoint {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--grid-gap-base);
+  padding: var(--panel-padding);
+}
+
+.savePoint h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+  line-height: 1.35;
+}
+
+.savePoint p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.savePointCard {
+  display: grid;
+  gap: var(--space-3);
+  padding: 18px;
+  background: rgba(7, 3, 17, 0.45);
+  border: 3px solid var(--color-border-soft);
+}
+
+.savePointCard p {
+  margin: 0;
+}
+
+.savePointCard span {
+  display: inline-block;
+  min-width: 76px;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+  color: var(--accent);
+}
+
+.contactButton {
+  width: 100%;
+}
+
+@media (max-width: 1080px) {
+  .savePoint {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .savePoint {
+    padding: 18px;
+  }
+}

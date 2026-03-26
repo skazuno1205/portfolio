@@ -1,0 +1,94 @@
+.questGrid,
+.sideQuestLinks {
+  display: grid;
+}
+
+.questGrid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--grid-gap-base);
+}
+
+.questCard {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--panel-padding);
+  background: var(--quest-main-bg),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0)),
+    var(--color-surface-default);
+}
+
+.questCard p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.questCardHead {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.questCardHead h3 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+  line-height: 1.25;
+}
+
+.questCardSide {
+  margin-top: var(--space-5);
+  background: var(--quest-side-bg),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    #2d1321;
+  border-color: #2a120d;
+}
+
+.questCardTypeSide,
+.sideQuestHeadingEyebrow {
+  color: #ffb97c;
+}
+
+.sideQuestHeading {
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-5);
+}
+
+.sideQuestLinks {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.sideQuestLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: var(--space-3) 14px;
+  background: rgba(255, 197, 140, 0.12);
+  border: 2px solid var(--quest-side-border);
+  color: var(--quest-side-text);
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+  line-height: 1.9;
+  text-align: center;
+  transition: transform 0.15s steps(2), border-color 0.2s ease, background 0.2s
+    ease;
+}
+
+.sideQuestLink:hover,
+.sideQuestLink:focus-visible {
+  transform: translate(-2px, -2px);
+  border-color: #ffd19a;
+  background: rgba(255, 197, 140, 0.2);
+}
+
+@media (max-width: 640px) {
+  .questCard {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 860px) {
+  .sideQuestLinks {
+    grid-template-columns: 1fr;
+  }
+}

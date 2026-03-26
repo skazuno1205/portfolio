@@ -1,0 +1,140 @@
+.skyModal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.skyModalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 2, 12, 0.78);
+  border: 0;
+}
+
+.skyModalDialog {
+  width: min(720px, calc(100vw - 24px));
+  max-width: 100%;
+  margin: auto;
+  padding: var(--panel-padding);
+  color: inherit;
+}
+
+.skyModalDialog::backdrop {
+  display: none;
+}
+
+.skyModalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  border: 0;
+  background: rgba(16, 9, 31, 0.88);
+  color: #fff6d1;
+  width: 42px;
+  height: 42px;
+  font-family: "Press Start 2P", monospace;
+}
+
+.skyModalContent,
+.skyModalCopy,
+.skyModalActions {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.skyModalCopy h2 {
+  margin: 0;
+}
+
+.skyModalDescription {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.skyBoard {
+  padding: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.14),
+      transparent 30%
+    ), linear-gradient(180deg, rgba(18, 9, 31, 0.86), rgba(8, 4, 18, 0.95));
+}
+
+.skyBoardFrame {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border: 3px solid rgba(140, 243, 255, 0.14);
+  background: linear-gradient(
+      180deg,
+      rgba(140, 243, 255, 0.08),
+      transparent 35%
+    ), linear-gradient(180deg, rgba(8, 4, 18, 0.65), rgba(8, 4, 18, 0.92));
+}
+
+.skyBoardCanvas {
+  display: block;
+  width: 100%;
+  height: 420px;
+}
+
+.skyModalResult {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.skyModalResultLabel {
+  margin: 0 0 6px;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-note);
+  color: var(--accent);
+}
+
+.skyModalResultSwatchWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.skyModalResultSwatch {
+  width: 42px;
+  height: 42px;
+  background: var(--swatch-color);
+  border: 3px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.18);
+}
+
+.skyModalResult code {
+  padding: 8px 10px;
+  background: rgba(5, 2, 12, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  color: #fff6d1;
+}
+
+@media (max-width: 720px) {
+  .skyModalDialog {
+    width: calc(100vw - 16px);
+    padding: 18px;
+  }
+
+  .skyBoard {
+    padding: 12px;
+  }
+
+  .skyBoardFrame {
+    min-height: 360px;
+  }
+
+  .skyBoardCanvas {
+    height: 360px;
+  }
+
+  .skyModalResult {
+    display: grid;
+  }
+}

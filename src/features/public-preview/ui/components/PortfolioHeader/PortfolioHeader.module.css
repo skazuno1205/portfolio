@@ -1,0 +1,285 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 18;
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: var(--space-5);
+  width: min(calc(100% - (var(--layout-gutter) * 2)), var(--grid-max));
+  margin: 0 auto;
+  padding: 18px 0 10px;
+}
+
+.playerPanel,
+.commandPanel {
+  position: relative;
+  backdrop-filter: blur(12px);
+}
+
+.playerPanel {
+  display: grid;
+  gap: var(--space-4);
+  padding: 18px;
+  background: linear-gradient(
+      180deg,
+      rgba(21, 10, 42, 0.94),
+      rgba(8, 4, 20, 0.96)
+    ), rgba(7, 3, 17, 0.92);
+  box-shadow: 0 18px 40px rgba(5, 8, 24, 0.34), inset 0 0 0 1px
+    rgba(255, 255, 255, 0.04);
+}
+
+.playerCore {
+  border: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: center;
+  text-align: left;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.playerBadge {
+  display: grid;
+  place-items: center;
+  min-height: 92px;
+  padding: 12px;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #fff8cf;
+  background: linear-gradient(
+    180deg,
+    rgba(36, 22, 69, 0.96),
+    rgba(17, 9, 35, 0.96)
+  );
+  box-shadow: 0 0 0 3px #0f081d, 0 0 0 6px rgba(140, 243, 255, 0.2);
+}
+
+.playerIdentity {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.playerName {
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  line-height: 1.2;
+  color: #fff6db;
+}
+
+.playerClass {
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-label);
+  line-height: 1.7;
+  letter-spacing: 0.07em;
+  color: var(--accent);
+}
+
+.playerStatus {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.015)
+    ), rgba(8, 3, 18, 0.72);
+  border: 2px solid rgba(140, 243, 255, 0.14);
+}
+
+.playerStatusRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+  line-height: 1.7;
+  color: #d8f5ff;
+}
+
+.hpGauge {
+  position: relative;
+  height: 16px;
+  overflow: hidden;
+  background: rgba(11, 9, 26, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.hpGaugeFill {
+  display: block;
+  width: 82%;
+  height: 100%;
+  background: linear-gradient(90deg, #5cf2ff, #7dffcf 58%, #fff0a1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.commandPanel {
+  display: grid;
+  gap: var(--space-4);
+  padding: 18px;
+  background: linear-gradient(
+      180deg,
+      rgba(17, 10, 33, 0.94),
+      rgba(8, 4, 19, 0.96)
+    ), rgba(7, 3, 17, 0.9);
+  box-shadow: 0 18px 40px rgba(5, 8, 24, 0.34), inset 0 0 0 1px
+    rgba(255, 255, 255, 0.04);
+}
+
+.commandPanelHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.commandPanelHeader p {
+  margin: 0;
+}
+
+.commandPanelHint {
+  margin-top: 10px;
+  color: var(--color-text-secondary);
+}
+
+.systemLink,
+.commandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 14px;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--font-size-ui-sm);
+  line-height: 1.6;
+  color: #d6f5ff;
+  background: linear-gradient(
+      180deg,
+      rgba(33, 18, 61, 0.92),
+      rgba(17, 9, 32, 0.94)
+    ), rgba(11, 6, 24, 0.92);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(140, 243, 255, 0.05);
+  transition:
+    transform 0.15s steps(2),
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.systemLink {
+  flex-shrink: 0;
+  color: #fff2bf;
+  border-color: rgba(255, 220, 131, 0.18);
+}
+
+.systemLink:hover,
+.systemLink:focus-visible,
+.commandLink:hover,
+.commandLink:focus-visible {
+  color: #fbfeff;
+  border-color: rgba(140, 243, 255, 0.42);
+  box-shadow: 0 0 0 2px rgba(19, 13, 34, 0.95), inset 0 0 0 1px
+    rgba(140, 243, 255, 0.12);
+  filter: brightness(1.05);
+}
+
+.systemLink:hover .commandCursor,
+.systemLink:focus-visible .commandCursor,
+.commandLink:hover .commandCursor,
+.commandLink:focus-visible .commandCursor,
+.commandLinkActive .commandCursor {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.commandGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.commandLink {
+  position: relative;
+  justify-content: flex-start;
+}
+
+.commandLinkActive {
+  color: #fffbe6;
+  background: linear-gradient(
+      180deg,
+      rgba(57, 33, 97, 0.96),
+      rgba(23, 12, 43, 0.96)
+    ), rgba(17, 9, 32, 0.96);
+  border-color: rgba(140, 243, 255, 0.42);
+  box-shadow: 0 0 0 2px rgba(12, 8, 24, 0.95), 0 0 18px
+    rgba(140, 243, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.commandCursor {
+  display: inline-block;
+  color: #8cf3ff;
+  opacity: 0.7;
+  transform: translateX(0);
+  transition: transform 0.16s steps(2), opacity 0.16s steps(2), color 0.18s ease;
+}
+
+@media (max-width: 960px) {
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .commandGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    width: min(calc(100% - (var(--layout-gutter) * 2)), var(--grid-max));
+    padding-top: 12px;
+    gap: var(--space-4);
+  }
+
+  .playerPanel,
+  .commandPanel {
+    padding: 14px;
+  }
+
+  .playerCore {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .playerBadge {
+    min-height: 72px;
+    font-size: 0.9rem;
+  }
+
+  .playerStatusRow,
+  .systemLink,
+  .commandLink,
+  .playerClass {
+    font-size: 0.58rem;
+  }
+
+  .commandPanelHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .commandGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .systemLink,
+  .commandLink {
+    min-height: 48px;
+    padding: 10px 12px;
+  }
+}
