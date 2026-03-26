@@ -95,7 +95,7 @@ export function PortfolioHeader() {
           <span className={styles.playerIdentity}>
             <span className={styles.playerName}>Shota Kazuno</span>
             <span className={styles.playerClass}>
-              Class: Frontend / Hardwere
+              Class: Frontend / Hardware
             </span>
           </span>
         </button>

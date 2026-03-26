@@ -2,6 +2,7 @@ import type { Meter, StatusCard } from "../../../model/portfolioData";
 import { cn } from "../../utils/cn";
 import baseStyles from "../PortfolioBase.module.css";
 import styles from "./HeroSection.module.css";
+import { BuildTimeMeter, CareerMeter } from "./MeterBlock";
 
 type HeroSectionProps = {
   meterAnimated: boolean;
@@ -18,12 +19,6 @@ export function HeroSection({
   statusCards,
   typewriterMessage,
 }: HeroSectionProps) {
-  const meterFillClassNames = {
-    expFill: styles.expFill,
-    hpFill: styles.hpFill,
-    magicFill: styles.magicFill,
-  } as const;
-
   return (
     <section className={cn(styles.hero, baseStyles.section)} id="top">
       <div className={cn(styles.heroHud, baseStyles.panel, baseStyles.reveal)}>
@@ -46,51 +41,21 @@ export function HeroSection({
         </div>
 
         <div className={styles.meterGroup}>
-          {meters.map((meter) => {
-            const hasCareerMeta = Boolean(
-              meter.levelLabel || meter.progressLabel || meter.nextLevelLabel,
-            );
-
-            return (
-              <div key={meter.label} className={styles.meterBlock}>
-                <p className={styles.meterTitle}>{meter.label}</p>
-                {hasCareerMeta ? (
-                  <div className={styles.meterMetaRow}>
-                    {meter.levelLabel ? (
-                      <span className={styles.meterMetaPrimary}>
-                        {meter.levelLabel}
-                      </span>
-                    ) : null}
-                    {meter.progressLabel ? (
-                      <span className={styles.meterMetaSecondary}>
-                        {meter.progressLabel}
-                      </span>
-                    ) : null}
-                  </div>
-                ) : meter.valueLabel ? (
-                  <p className={styles.meterValue}>{meter.valueLabel}</p>
-                ) : null}
-                <div className={styles.meterTrack}>
-                  <span
-                    className={cn(
-                      styles.meterFill,
-                      meter.fillClassName
-                        ? meterFillClassNames[meter.fillClassName]
-                        : undefined,
-                    )}
-                    style={{
-                      width: meterAnimated ? `${meter.width}%` : "0%",
-                    }}
-                  />
-                </div>
-                {hasCareerMeta && meter.nextLevelLabel ? (
-                  <p className={styles.meterSupportingText}>
-                    {meter.nextLevelLabel}
-                  </p>
-                ) : null}
-              </div>
-            );
-          })}
+          {meters.map((meter) =>
+            meter.levelLabel || meter.progressLabel || meter.nextLevelLabel ? (
+              <CareerMeter
+                key={meter.label}
+                meter={meter}
+                meterAnimated={meterAnimated}
+              />
+            ) : (
+              <BuildTimeMeter
+                key={meter.label}
+                meter={meter}
+                meterAnimated={meterAnimated}
+              />
+            ),
+          )}
         </div>
 
         <div className={cn(baseStyles.panel, baseStyles.panelInner)}>

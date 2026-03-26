@@ -15,8 +15,6 @@ vi.mock("../app/App", () => ({
   App: () => <div data-testid="app-root">App Root</div>,
 }));
 
-vi.mock("@google/model-viewer", () => ({}));
-
 describe("main", () => {
   afterEach(() => {
     document.body.innerHTML = "";
