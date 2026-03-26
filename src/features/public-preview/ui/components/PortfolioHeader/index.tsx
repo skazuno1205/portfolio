@@ -84,7 +84,14 @@ export function PortfolioHeader() {
           }
           type="button"
         >
-          <span className={styles.playerBadge}>SK</span>
+          <span className={styles.playerBadge}>
+            <img
+              alt=""
+              aria-hidden="true"
+              className={styles.playerBadgeImage}
+              src="/images/projects/sk.png"
+            />
+          </span>
           <span className={styles.playerIdentity}>
             <span className={styles.playerName}>Shota Kazuno</span>
             <span className={styles.playerClass}>
