@@ -12,6 +12,10 @@ function getGitHubPagesBasePath() {
 
   const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1];
 
+  if (repositoryName?.endsWith(".github.io")) {
+    return "/";
+  }
+
   return repositoryName ? `/${repositoryName}/` : "/";
 }
 
